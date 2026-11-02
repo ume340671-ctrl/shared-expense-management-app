@@ -1,0 +1,24 @@
+# Dépendances
+node_modules/
+
+# Build
+dist/
+
+# Test-only browser traces and screenshots
+artifacts/
+test-results/
+playwright-report/
+
+# Variables d'environnement (ne jamais versionner)
+.env
+.env.local
+.env.*.local
+
+# Logs
+npm-debug.log*
+*.log
+
+# Divers
+.DS_Store
+.vscode/
+.idea/

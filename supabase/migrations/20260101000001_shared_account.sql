@@ -1,0 +1,43 @@
+-- =====================================================================
+-- T9DYA MANAGER — Compte unique partagé (OPTIONNEL)
+--
+-- Méthode recommandée : Supabase Dashboard → Authentication → Users
+-- → "Add user" → email : admin-2026@gmail.com → Auto Generate Password
+-- (ou mot de passe choisi, à transmettre aux colocataires de façon sûre).
+--
+-- Le script ci-dessous est une ALTERNATIVE qui crée le compte directement
+-- en SQL. Remplacez « VOTRE_MOT_DE_PASSE » par un mot de passe fort AVANT
+-- de l'exécuter, puis changez-le après la première connexion.
+-- Le mot de passe n'est jamais stocké en clair : il est haché par pgcrypto.
+-- =====================================================================
+
+-- Décommentez et adaptez pour créer le compte via SQL :
+--
+-- insert into auth.users (
+--   instance_id,
+--   id,
+--   aud,
+--   role,
+--   email,
+--   encrypted_password,
+--   email_confirmed_at,
+--   confirmation_token,
+--   created_at,
+--   updated_at
+-- )
+-- values (
+--   '00000000-0000-0000-0000-000000000000',
+--   gen_random_uuid(),
+--   'authenticated',
+--   'authenticated',
+--   'admin-2026@gmail.com',
+--   crypt('VOTRE_MOT_DE_PASSE', gen_salt('bf')),
+--   now(),
+--   '',
+--   now(),
+--   now()
+-- )
+-- on conflict (email) do nothing;
+
+-- Vérification : les quatre colocataires doivent être présents une seule fois
+-- select full_name from public.housemates order by full_name;

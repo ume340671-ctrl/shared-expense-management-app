@@ -1,0 +1,258 @@
+@import "tailwindcss";
+
+/* ---------------------------------------------------------------
+   T9DYA MANAGER — Design system
+   Dark theme by default, premium fintech aesthetic.
+   --------------------------------------------------------------- */
+
+@custom-variant dark (&:where(.dark, .dark *));
+
+:root {
+  --bg: #f6f6f2;
+  --bg-elevated: #ffffff;
+  --surface: #ffffff;
+  --surface-2: #eeeeea;
+  --border: #e5e5df;
+  --border-strong: #d3d3cb;
+  --text: #15171b;
+  --text-secondary: #55595f;
+  --text-muted: #8b9097;
+  --accent: #b7e038;
+  --accent-strong: #a3cc22;
+  --accent-text: #4f7a0a;
+  --accent-contrast: #141a05;
+  --accent-soft: rgba(163, 204, 34, 0.14);
+  --danger: #d5483f;
+  --danger-soft: rgba(213, 72, 63, 0.12);
+  --shadow: 0 1px 2px rgba(20, 24, 33, 0.05), 0 8px 24px -12px rgba(20, 24, 33, 0.14);
+  --shadow-lg: 0 2px 4px rgba(20, 24, 33, 0.06), 0 24px 48px -20px rgba(20, 24, 33, 0.22);
+  color-scheme: light;
+}
+
+.dark {
+  --bg: #08090b;
+  --bg-elevated: #0d0f12;
+  --surface: #111318;
+  --surface-2: #171a20;
+  --border: #21252c;
+  --border-strong: #2f343c;
+  --text: #f4f2ec;
+  --text-secondary: #b6bbc2;
+  --text-muted: #7f858e;
+  --accent: #c8f65d;
+  --accent-strong: #d9fb8c;
+  --accent-text: #c8f65d;
+  --accent-contrast: #0b0e05;
+  --accent-soft: rgba(200, 246, 93, 0.1);
+  --danger: #f0655c;
+  --danger-soft: rgba(240, 101, 92, 0.12);
+  --shadow: 0 1px 2px rgba(0, 0, 0, 0.4), 0 12px 32px -16px rgba(0, 0, 0, 0.6);
+  --shadow-lg: 0 2px 6px rgba(0, 0, 0, 0.45), 0 28px 56px -24px rgba(0, 0, 0, 0.7);
+  color-scheme: dark;
+}
+
+@theme inline {
+  --font-sans: "Josefin Sans", ui-sans-serif, system-ui, -apple-system, sans-serif;
+
+  --color-bg: var(--bg);
+  --color-bg-elevated: var(--bg-elevated);
+  --color-surface: var(--surface);
+  --color-surface-2: var(--surface-2);
+  --color-line: var(--border);
+  --color-line-strong: var(--border-strong);
+  --color-ink: var(--text);
+  --color-ink-secondary: var(--text-secondary);
+  --color-ink-muted: var(--text-muted);
+  --color-accent: var(--accent);
+  --color-accent-strong: var(--accent-strong);
+  --color-accent-text: var(--accent-text);
+  --color-accent-contrast: var(--accent-contrast);
+  --color-accent-soft: var(--accent-soft);
+  --color-danger: var(--danger);
+  --color-danger-soft: var(--danger-soft);
+
+  --shadow-card: var(--shadow);
+  --shadow-float: var(--shadow-lg);
+}
+
+* {
+  border-color: var(--border);
+}
+
+html {
+  -webkit-text-size-adjust: 100%;
+}
+
+body {
+  margin: 0;
+  min-height: 100dvh;
+  background-color: var(--bg);
+  color: var(--text);
+  font-family: "Josefin Sans", ui-sans-serif, system-ui, sans-serif;
+  font-weight: 400;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  text-rendering: optimizeLegibility;
+  overscroll-behavior-y: none;
+}
+
+::selection {
+  background: var(--accent);
+  color: var(--accent-contrast);
+}
+
+/* Scrollbar — discreet, premium */
+::-webkit-scrollbar {
+  width: 10px;
+  height: 10px;
+}
+::-webkit-scrollbar-track {
+  background: transparent;
+}
+::-webkit-scrollbar-thumb {
+  background: var(--border-strong);
+  border-radius: 999px;
+  border: 3px solid transparent;
+  background-clip: content-box;
+}
+::-webkit-scrollbar-thumb:hover {
+  background: var(--text-muted);
+  background-clip: content-box;
+}
+
+/* Focus ring — accessible, accent based */
+:focus-visible {
+  outline: 2px solid var(--accent);
+  outline-offset: 2px;
+  border-radius: 6px;
+}
+
+input::-webkit-outer-spin-button,
+input::-webkit-inner-spin-button {
+  -webkit-appearance: none;
+  margin: 0;
+}
+input[type="number"] {
+  -moz-appearance: textfield;
+}
+
+/* Hide native date picker indicator inconsistencies */
+input[type="date"]::-webkit-calendar-picker-indicator {
+  opacity: 0.55;
+  cursor: pointer;
+}
+.dark input[type="date"]::-webkit-calendar-picker-indicator {
+  filter: invert(1);
+}
+
+/* ---------------------------------------------------------------
+   Animations — discreet and fluid
+   --------------------------------------------------------------- */
+@keyframes t9-fade-in {
+  from {
+    opacity: 0;
+  }
+  to {
+    opacity: 1;
+  }
+}
+
+@keyframes t9-rise {
+  from {
+    opacity: 0;
+    transform: translateY(10px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+@keyframes t9-pop {
+  from {
+    opacity: 0;
+    transform: scale(0.96) translateY(8px);
+  }
+  to {
+    opacity: 1;
+    transform: scale(1) translateY(0);
+  }
+}
+
+@keyframes t9-shimmer {
+  from {
+    background-position: -200% 0;
+  }
+  to {
+    background-position: 200% 0;
+  }
+}
+
+@keyframes t9-toast-in {
+  from {
+    opacity: 0;
+    transform: translateY(-14px) scale(0.98);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0) scale(1);
+  }
+}
+
+.animate-fade-in {
+  animation: t9-fade-in 0.35s ease both;
+}
+.animate-rise {
+  animation: t9-rise 0.45s cubic-bezier(0.22, 1, 0.36, 1) both;
+}
+.animate-pop {
+  animation: t9-pop 0.28s cubic-bezier(0.22, 1, 0.36, 1) both;
+}
+.animate-toast-in {
+  animation: t9-toast-in 0.3s cubic-bezier(0.22, 1, 0.36, 1) both;
+}
+
+.skeleton {
+  background: linear-gradient(
+    90deg,
+    var(--surface-2) 25%,
+    color-mix(in srgb, var(--surface-2) 55%, var(--border-strong)) 37%,
+    var(--surface-2) 63%
+  );
+  background-size: 200% 100%;
+  animation: t9-shimmer 1.4s ease-in-out infinite;
+  border-radius: 8px;
+}
+
+/* Staggered list entrance */
+.stagger > * {
+  animation: t9-rise 0.4s cubic-bezier(0.22, 1, 0.36, 1) both;
+}
+.stagger > *:nth-child(1) {
+  animation-delay: 0.02s;
+}
+.stagger > *:nth-child(2) {
+  animation-delay: 0.05s;
+}
+.stagger > *:nth-child(3) {
+  animation-delay: 0.08s;
+}
+.stagger > *:nth-child(4) {
+  animation-delay: 0.11s;
+}
+.stagger > *:nth-child(5) {
+  animation-delay: 0.14s;
+}
+.stagger > *:nth-child(6) {
+  animation-delay: 0.17s;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  *,
+  *::before,
+  *::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+  }
+}
